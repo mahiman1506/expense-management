@@ -94,6 +94,21 @@ class ApiService {
     async getCompanies() {
         return this.request('/companies');
     }
+
+    async expanseHistory(managerId) {
+        // Get all expenses
+        const expenses = await this.getExpenses();
+        // For each expense, include employee info if available
+        const data = (expenses || []).filter(expense =>
+            expense.ApprovalWorkflows?.some(
+                wf => wf.approverId === managerId && (wf.status === 'Approved' || wf.status === 'Rejected')
+            )
+        ).map(expense => ({
+            ...expense,
+            employee: expense.User // assumes backend populates User with employee info
+        }));
+        return data;
+    }
 }
 
 export default new ApiService();

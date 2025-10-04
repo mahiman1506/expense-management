@@ -37,7 +37,7 @@ app.post('/api/auth', async (req, res) => {
                 name,
                 email,
                 password: hash,
-                role: 'Admin',
+                role: 'Employee',
                 companyId: company.id
             });
 

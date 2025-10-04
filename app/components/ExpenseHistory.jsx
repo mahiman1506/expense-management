@@ -13,7 +13,7 @@ export default function ExpenseHistory({ userId }) {
             setLoading(true);
             setError('');
             try {
-                const data = await apiService.getExpenses(userId);
+                const data = await apiService.expanseHistory(userId);
                 console.log(data)
                 setHistory(data);
             } catch (err) {
@@ -73,6 +73,12 @@ export default function ExpenseHistory({ userId }) {
                                                     </span>
                                                 </li>
                                             ))}
+                                            {/* Only show employee name in manager side */}
+                                            {expense.employee && expense.employee.name && (userId && expense.employee.id !== userId) && (
+                                                <li key={expense.id}>
+                                                    <strong>Employee name : {expense.employee.name}</strong>
+                                                </li>
+                                            )}
                                         </ul>
                                     </div>
                                 )}
