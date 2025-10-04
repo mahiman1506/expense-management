@@ -5,12 +5,26 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "backend": "node backend/server.js",
+    "dev:full": "concurrently \"npm run backend\" \"npm run dev\"",
+    "setup-db": "node setup-database.js",
+    "setup-sql": "node setup-sql.js",
+    "create-admin": "node create-admin.js",
+    "reset-db": "node reset-database.js",
+    "setup": "npm run setup-sql"
   },
   "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "concurrently": "^8.2.2",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "mysql2": "^3.15.1",
+    "next": "15.5.4",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "next": "15.5.4"
+    "sequelize": "^6.37.7",
+    "tesseract.js": "^6.0.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
