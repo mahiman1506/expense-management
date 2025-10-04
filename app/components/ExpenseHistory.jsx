@@ -14,6 +14,7 @@ export default function ExpenseHistory({ userId }) {
             setError('');
             try {
                 const data = await apiService.getExpenses(userId);
+                console.log(data)
                 setHistory(data);
             } catch (err) {
                 setError(err.message);

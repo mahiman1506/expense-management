@@ -6,7 +6,7 @@ import ExpenseHistory from './ExpenseHistory';
 
 export default function AdminDashboard({ user }) {
     return (
-        <div className="flex flex-col gap-8 p-4 w-full max-w-2xl mx-auto">
+        <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-10">
             <h1 className="text-2xl font-bold">Admin: {user.name}</h1>
             <UserManagement companyId={user.companyId} />
             <ApprovalRuleConfig companyId={user.companyId} />
